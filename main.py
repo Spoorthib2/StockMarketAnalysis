@@ -3,14 +3,16 @@ import pandas as pd
 from analysis import analyze_stock
 from visualization import plot_stock
 
-# Read Excel File
 df = pd.read_excel("data/stock_data.xlsx")
 
-# Display Data
+df['Date'] = pd.to_datetime(df['Date'])
+
 print(df)
 
-# Analyze Stock
+print("\nFirst Date:", df['Date'].min())
+print("Last Date :", df['Date'].max())
+print("Rows      :", len(df))
+
 df = analyze_stock(df)
 
-# Plot Graph
 plot_stock(df)
